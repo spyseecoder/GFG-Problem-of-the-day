@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    vector<vector<string>> anagrams(vector<string>& arr) {
+        unordered_map<string, vector<string>> mp;
+
+        for (string& s : arr) {
+            string sortedWord = s;
+            sort(sortedWord.begin(), sortedWord.end());
+            
+            if (!mp.count(sortedWord)) {
+                mp[sortedWord] = vector<string>();
+            }
+            mp[sortedWord].push_back(s);
+        }
+        
+        vector<vector<string>> result;
+        for (auto& entry : mp) {
+            result.push_back(entry.second);
+        }
+        
+        return result;
+    }
+};
