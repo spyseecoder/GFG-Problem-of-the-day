@@ -1,0 +1,29 @@
+//CPP Code
+
+
+class Solution {
+  public:
+    // Function to remove a loop in the linked list.
+    void removeLoop(Node* head) {
+        // code here
+         Node* slow = head;
+        Node* fast = head;
+        Node* prev = head;
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            prev = fast;
+            fast = fast->next->next;
+            if (slow == fast) {
+                slow = head;
+                prev = prev->next;
+                while (slow != fast) {
+                    slow = slow->next;
+                    fast = fast->next;
+                    prev = prev->next;
+                }
+                prev->next = nullptr;
+                return;
+            }
+        }
+    }
+};
