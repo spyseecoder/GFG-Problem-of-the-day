@@ -1,0 +1,20 @@
+// JAVA Code
+
+class Solution {
+    int ans=0;
+    int diameter(Node root) {
+        //ans=0;
+        calc(root);
+        return ans;
+    }
+    int calc(Node root){
+        if(root==null){  
+            return 0;
+        }
+        int left = calc(root.left);
+        int right = calc(root.right);
+        ans = Math.max(ans, left+right);
+        return 1+Math.max(left,right);
+    }
+    
+};
