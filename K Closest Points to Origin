@@ -1,0 +1,31 @@
+//CPP Code
+
+
+class Solution {
+  public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        // Your code here
+        auto compare = [](vector<int>& a, vector<int>& b) {
+              return distance(a) < distance(b); 
+          };
+          priority_queue<vector<int>, vector<vector<int>>, decltype(compare)> pq(compare);
+  
+          for (auto& pt : points) {
+              pq.push(pt);
+              if (pq.size() > k) {
+                  pq.pop(); 
+              }
+          }
+          vector<vector<int>> ans;
+          while (!pq.empty()) {
+              ans.push_back(pq.top());
+              pq.pop();
+          }
+          return ans;
+      }
+  
+    private:
+      static int distance(vector<int>& point) {
+          return point[0] * point[0] + point[1] * point[1]; 
+    }
+};
