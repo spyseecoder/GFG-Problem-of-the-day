@@ -13,7 +13,6 @@ class Solution {
         mp[currSum]--;
     }
     int sumK(Node *root, int k) {
-        //CodeGenius
         unordered_map<int,int>mp;
         int count=0;
         solve(root,k,0,count,mp);
